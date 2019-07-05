@@ -1,0 +1,35 @@
+---
+- name: remove nginx
+  hosts: webserver
+  become: yes
+
+  tasks:
+  - name: Ensure nginx service is stoped
+    service:
+      name: nginx
+      state: stopped
+
+  - name: Remove index.html
+    file:
+      path: /var/www/html/index.html
+      state: absent
+
+  - name: Ensure nginx package is absent
+    apt:
+      name: nginx
+      state: absent
+
+- name: remove db
+  hosts: db
+  become: yes
+
+  tasks:
+  - name: Ensure Postgresql service is stoped
+    service:
+      name: postgresql
+      state: stopped
+
+  - name: Ensure Postgresql package is absent
+    apt:
+      name: postgresql
+      state: absent
