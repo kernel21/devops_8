@@ -74,7 +74,7 @@
   tags:
     - docker
 
-  # sudo apt-get install docker-compose=1.8.*
+# sudo apt-get install docker-compose=1.8.*
 - name: Install docker-compose
   apt:
     name: docker-compose=1.8.*
