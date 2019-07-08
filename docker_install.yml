@@ -1,0 +1,15 @@
+---
+- name: install docker
+  hosts: docker_host
+  become: yes
+
+  tasks:
+  - name: Ensure docker package is present
+    apt:
+      name: docker.io
+      state: present
+
+    - name: Ensure docker service is started
+    service:
+      name: docker
+      state: started
