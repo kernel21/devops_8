@@ -3,18 +3,18 @@
   connection: local
   gather_facts: no
   tasks:
-    - docker_compose:
+    - docker_service:
         project_src: compose_dir
         state: absent
 
-    - docker_compose:
+    - docker_service:
         project_src: compose_dir
       register: output
 
     - debug:
         var: output
 
-    - docker_compose:
+    - docker_service:
         project_src: compose_dir
         build: no
       register: output
@@ -25,7 +25,7 @@
     - assert:
         that: "not output.changed "
 
-    - docker_compose:
+    - docker_service:
         project_src: compose_dir
         build: no
         stopped: true
@@ -38,7 +38,7 @@
         that:
           - "not "
 
-    - docker_compose:
+    - docker_service:
         project_src: compose_dir
         build: no
         restarted: true
