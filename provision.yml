@@ -36,7 +36,7 @@
 
     - assert:
         that:
-          - "not "
+          - "not lab7ms_servlets_1.state.running"
 
     - docker_service:
         project_src: compose_dir
@@ -49,4 +49,4 @@
 
     - assert:
         that:
-- "lab7ms_servlets_1.state.running"
+          - "lab7ms_servlets_1.state.running"
