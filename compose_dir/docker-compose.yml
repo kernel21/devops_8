@@ -2,7 +2,7 @@ version: '2'
 services:
   servlets:
     build:
-      context: multi-stage
+      context: .
     volumes:
       - builds:/maven_build/
     expose:

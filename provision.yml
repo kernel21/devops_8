@@ -1,52 +1,56 @@
 - name: Run using a project directory
   hosts: docker_host
-  #connection: local
-  gather_facts: yes
+  connection: ssh
+  gather_facts: no
   tasks:
+    - name: copy docker files
+      copy: src=./compose_dir/ dest=/tmp/
+        directory_mode=yes
+
     - docker_compose:
-        project_src: compose_dir
+        project_src: /tmp/
         state: absent
 
     - docker_compose:
-        project_src: compose_dir
+        project_src: /tmp/
       register: output
 
-    - debug:
-        var: output
+#    - debug:
+#        var: output
 
     - docker_compose:
-        project_src: compose_dir
+        project_src: /tmp/
         build: no
       register: output
 
-    - debug:
-        var: output
+#    - debug:
+#        var: output
 
     - assert:
         that: "not output.changed "
 
     - docker_compose:
-        project_src: compose_dir
-        build: no
+        project_src: /tmp/
+        build: yes
         stopped: true
       register: output
 
-    - debug:
-        var: output
+#    - debug:
+#        var: output
 
     - assert:
         that:
-          - "not lab7ms_servlets_1.state.running"
+          - "not servlets.lab7ms_servlets_1.state.running"
 
     - docker_compose:
-        project_src: compose_dir
+        project_src: /tmp/
         build: no
         restarted: true
       register: output
 
-    - debug:
-        var: output
+#    - debug:
+#        var: output
 
     - assert:
         that:
-          - "lab7ms_servlets_1.state.running"
+          - "servlets.lab7ms_servlets_1.state.running"

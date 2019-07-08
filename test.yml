@@ -1,0 +1,29 @@
+- name: Run with inline v2 compose
+  hosts: docker_host
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - docker_compose:
+        project_src: /tmp/
+        state: absent
+
+    - docker_service:
+        project_name: lab7ms
+        definition:
+          version: '2'
+          services:
+            servlets:
+              build: "/tmp/multi-stage/"
+              expose:
+                - "8080"
+              ports:
+                - "8080:8080"
+              restart: always
+      register: output
+
+    - debug:
+        var: output
+
+    - assert:
+        that:
+          - "servlets.lab7ms_servlets_1.state.running"

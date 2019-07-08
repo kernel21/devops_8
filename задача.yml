@@ -1,0 +1,39 @@
+---
+mechta:
+  otdel1:
+    Payment_level: 1
+    Profession:
+      Buhgalter:
+        Olya: 4
+      Other:
+        Dmitry: 3
+        Ivan: 2
+  otdel2:
+    Payment_level: 3
+    Profession:
+      Urist:
+        Roman: 4
+          Age: 30-
+      Voditel:
+        Maksim: 2
+          Age: 30-
+  otdel3:
+    Payment_level: 3
+    Profession:
+      Urist:
+        Olya: 1
+      Stroiteli:
+        Ivan: 1
+        Nikolay: 1
+  otdel[4-5]:
+    Payment_level: 2
+    Profession:
+      Paperwork:
+        Olya: 5
+          Age: 30+
+  otdel6:
+    Payment_level: 3
+    Profession:
+      SecurityDirector:
+        IgorViktorovish: 1
+          Age: 50++
