@@ -17,28 +17,28 @@
 
 # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 - name: Add Docker s official GPG key
-    apt_key:
-      url: https://download.docker.com/linux/ubuntu/gpg
-      state: present
-    tags:
-      - docker
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  tags:
+    - docker
 
 # sudo apt-key fingerprint 0EBFCD88
 - name: Verify that we have the key with the fingerprint
-    apt_key:
-      id: 0EBFCD88
-      state: present
-    tags:
-      - docker
+  apt_key:
+    id: 0EBFCD88
+    state: present
+  tags:
+    - docker
 
 # sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
 - name: Set up the stable repository
-    apt_repository:
-      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
-      state: present
-      update_cache: yes
-    tags:
-      - docker
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    state: present
+    update_cache: yes
+  tags:
+    - docker
 
 # sudo apt-get update
 - name: Update apt packages
