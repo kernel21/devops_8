@@ -42,37 +42,37 @@
 
 # sudo apt-get update
 - name: Update apt packages
-    apt:
-      update_cache: yes
-    tags:
-      - docker
+  apt:
+    update_cache: yes
+  tags:
+    - docker
 
 # sudo apt-get install docker-ce=18.03.*
 - name: Install docker
-    apt:
-      name: docker-ce=18.03.*
-      state: present
-      update_cache: yes
-      notify: Start docker on boot
-    tags:
-      - docker
+  apt:
+    name: docker-ce=18.03.*
+    state: present
+    update_cache: yes
+    notify: Start docker on boot
+  tags:
+    - docker
 
 # sudo groupadd docker
 - name: Create "docker" group
-    group:
-      name: "{{ docker_group }}"
-      state: present
-    tags:
-      - docker
+  group:
+    name: "{{ docker_group }}"
+    state: present
+  tags:
+    - docker
 
 # sudo usermod -aG docker ubuntu
 - name: Add remote "ubuntu" user to "docker" group
-    user:
-      name: "{{ remote_user }}"
-      group: "{{ docker_group }}"
-      append: yes
-    tags:
-      - docker
+  user:
+    name: "{{ remote_user }}"
+    group: "{{ docker_group }}"
+    append: yes
+  tags:
+    - docker
 
   # sudo apt-get install docker-compose=1.8.*
 - name: Install docker-compose
