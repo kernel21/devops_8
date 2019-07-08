@@ -27,7 +27,7 @@
 - name: Verify that we have the key with the fingerprint
   apt_key:
     id: 0EBFCD88
-      state: present
+    state: present
   tags:
    - docker
 
