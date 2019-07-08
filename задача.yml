@@ -13,10 +13,10 @@ mechta:
     Profession:
       Urist:
         Roman: 4
-          Age: 30-
+          Age: 30m
       Voditel:
         Maksim: 2
-          Age: 30-
+          Age: 30m
   otdel3:
     Payment_level: 3
     Profession:
@@ -30,10 +30,10 @@ mechta:
     Profession:
       Paperwork:
         Olya: 5
-          Age: 30+
+          Age: 30p
   otdel6:
     Payment_level: 3
     Profession:
       SecurityDirector:
         IgorViktorovish: 1
-          Age: 50++
+          Age: 50pp
