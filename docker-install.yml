@@ -1,0 +1,33 @@
+---
+- name: install docker
+  hosts: docker_host
+  become: yes
+
+  tasks:
+    - name: Install docker packages
+      package:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      with_items:
+        - docker.io
+        - docker-compose
+        - libffi-dev
+        - libssl-dev
+
+    - name: Ensure docker service is started
+      systemd:
+        name: docker
+        state: started
+
+    - name: Install pip from repo
+      package:
+        state: latest
+        name: python3-pip
+
+    - name: Install from pip python modules
+      pip:
+        name:
+         - docker
+         - docker-compose
+         - requests>=2.20.1
