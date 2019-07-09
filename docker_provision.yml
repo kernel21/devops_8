@@ -15,16 +15,16 @@
         project_src: /tmp/
       register: output
 
-#    - debug:
-#        var: output
+    - debug:
+        var: output
 
     - docker_compose:
         project_src: /tmp/
         build: no
       register: output
 
-#    - debug:
-#        var: output
+    - debug:
+        var: output
 
     - assert:
         that: "not output.changed "
@@ -35,8 +35,8 @@
         stopped: true
       register: output
 
-#    - debug:
-#        var: output
+    - debug:
+        var: output
 
     - assert:
         that:
@@ -48,8 +48,8 @@
         restarted: true
       register: output
 
-#    - debug:
-#        var: output
+    - debug:
+        var: output
 
     - assert:
         that:
